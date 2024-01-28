@@ -24,6 +24,8 @@ function handleSubmit(event) {
     event.target.elements['search-field'].value
   );
 
+  //Додай у проєкт бібліотеку Axios для роботи з HTTP-запитами та виконай рефакторинг, замінивши нею використання fetch.
+  //Використовуй синтаксис async/await для роботи з асинхронними запитами. Виконай рефакторинг свого коду.
   function fetchImages() {
     return fetch(
       `https://pixabay.com/api/?key=${apiKey}&q=${userQuery}&image_type="photo"&orientation="horizontal"&safesearch=true`
