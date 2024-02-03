@@ -21,14 +21,19 @@ let page = 1;
 
 async function handleSubmit(event) {
   event.preventDefault();
+
+  const inputValue = event.target.elements['search-field'].value;
+  if (inputValue.trim().length === 0) {
+    return;
+  }
+
   imagesList.innerHTML = '';
+
   page = 1;
   hideButton();
   showLoader();
 
-  //Поле введення search-field вибирається безпосередньо за його іменем у event.target.elements['search-field'].value. Хоча це працює, варто було б згадати важливість перевірки введених даних перед їх кодуванням та передачею у виклик API.
-  //Запит не повинен відправлятися при порожньому рядку введення (або якщо просто використовується пробіл). Обов'язково додаємо перевірку, чи є щось в інпуті.
-  userQuery = encodeURIComponent(event.target.elements['search-field'].value);
+  userQuery = encodeURIComponent(inputValue);
 
   try {
     const firstPageResponse = await fetchImages(userQuery);
