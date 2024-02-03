@@ -5,13 +5,13 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homework 11</title>
+  <title>Homework 12</title>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat' />
   
   <script type="module" crossorigin src="/goit-js-hw-12/commonHelpers.js"></script>
-  <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-7659544d.js">
+  <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-da186403.js">
   <link rel="stylesheet" href="/goit-js-hw-12/assets/vendor-a51daae5.css">
-  <link rel="stylesheet" href="/goit-js-hw-12/assets/index-8bc2368e.css">
+  <link rel="stylesheet" href="/goit-js-hw-12/assets/index-05d84875.css">
 </head>
 
 <body>
@@ -19,14 +19,17 @@
     <label>
       <input class="search-field" type="text" placeholder="Search images..." name="search-field" autofocus />
     </label>
-    <button type="submit">Search</button>
+    <button class="search-button" type="submit">Search</button>
   </form>
 
-  <!-- <div class="loading-text">Loading images, please wait...</div> -->
+  <!-- Для того, щоб коректно працював плавний скролл, необхідно зафіксувати висоту картки. -->
+  <ul class="gallery"></ul>
+
+  <div class="load-more-div">
+    <button class="load-more-button" type="submit">Load more</button>
+  </div>
 
   <span class="loader">Loading images, please wait...</span>
-
-  <ul class="gallery"></ul>
 
   
 </body>
