@@ -8,8 +8,32 @@ body {
   font-family: 'Montserrat';
 }
 
+ul {
+  padding: 0px;
+}
+
 li {
   list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0px;
+  font-weight: bold;
+}
+
+button {
+  border-style: none;
+  border-radius: 8px;
+  background: #4E75FF;
+  padding: 8px 16px;
+  font-family: inherit;
+  color: #FFF;
+  font-size: 16px;
+  letter-spacing: 0.04em;
 }
 
 .search-form {
@@ -33,17 +57,6 @@ li {
 .search-field::placeholder {
   color: #808080;
   font-family: 'Montserrat';
-  font-size: 16px;
-  letter-spacing: 0.04em;
-}
-
-button {
-  border-style: none;
-  border-radius: 8px;
-  background: #4E75FF;
-  padding: 8px 16px;
-  font-family: inherit;
-  color: #FFF;
   font-size: 16px;
   letter-spacing: 0.04em;
 }
@@ -78,11 +91,38 @@ button {
   justify-content: center;
   gap: 24px;
   flex-wrap: wrap;
-  flex-direction: row;
+}
+
+.gallery-card {
+  border: 1px solid #2E2F42;
+  border-radius: 3px;
+  padding-bottom: 3px;
+  max-height: 100%;
 }
 
 .gallery-image {
+  object-fit: cover;
   width: 360px;
   height: 200px;
-  object-fit: cover;
+}
+
+.image-stats-card {
+  display: flex;
+  justify-content: space-around;
+  color: #2E2F42;
+}
+
+.image-stats-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+}
+
+.load-more-div {
+  display: none;
+  justify-content: center;
+  padding: 15px 0px;
 }
