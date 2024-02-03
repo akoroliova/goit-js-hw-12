@@ -1,4 +1,4 @@
-import axios from 'axios'; //https://github.com/axios/axios?tab=readme-ov-file#table-of-contents
+import axios from 'axios';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
@@ -32,9 +32,9 @@ async function handleSubmit(event) {
 
   try {
     const firstPageResponse = await fetchImages(userQuery);
-    const totalImages = firstPageResponse.data.total;
+    const totalImagesCount = firstPageResponse.data.totalHits;
 
-    if (totalImages === 0) {
+    if (totalImagesCount === 0) {
       hideLoader();
       iziToast.error({
         position: 'topRight',
@@ -48,7 +48,7 @@ async function handleSubmit(event) {
       const imagesResultingArray = mapResponseData(imagesInitialArray);
       renderImages(imagesResultingArray);
       searchForm.reset();
-      if (totalImages > perPage) {
+      if (totalImagesCount > perPage) {
         showButton();
       }
     }
@@ -67,8 +67,8 @@ async function handleClick(event) {
   try {
     page += 1;
 
-    const subsequentResponse = await fetchImages(userQuery);
-    const totalImagesCount = subsequentResponse.data.total;
+    const subsequentPageResponse = await fetchImages(userQuery);
+    const totalImagesCount = subsequentPageResponse.data.totalHits;
     const totalPagesCount = Math.ceil(totalImagesCount / perPage);
 
     if (page >= totalPagesCount) {
@@ -77,12 +77,30 @@ async function handleClick(event) {
         position: 'topRight',
         message: "We're sorry, but you've reached the end of search results.",
       });
+    } else if (page === totalPagesCount) {
+      hideLoader();
+      const imagesInitialArray = subsequentPageResponse.data.hits;
+      const imagesResultingArray = mapResponseData(imagesInitialArray);
+      renderImages(imagesResultingArray);
+      return iziToast.error({
+        position: 'topRight',
+        message: "We're sorry, but you've reached the end of search results.",
+      });
     } else {
       hideLoader();
       showButton();
-      const imagesInitialArray = subsequentResponse.data.hits;
+      const imagesInitialArray = subsequentPageResponse.data.hits;
       const imagesResultingArray = mapResponseData(imagesInitialArray);
+
       renderImages(imagesResultingArray);
+
+      const card = document.querySelector('.gallery-card');
+      const cardDOMRect = card.getBoundingClientRect();
+      const options = {
+        top: cardDOMRect.height * 2,
+        behavior: 'smooth',
+      };
+      window.scrollBy(options);
     }
   } catch (error) {
     console.log(error);
