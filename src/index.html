@@ -11,9 +11,10 @@
 </head>
 
 <body>
-  <form class="search-form" autocomplete="off">
+  <form class="search-form">
     <label>
-      <input class="search-field" type="text" placeholder="Search images..." name="search-field" autofocus />
+      <input class="search-field" type="text" placeholder="Search images..." name="search-field" autofocus
+        autocomplete="off" />
     </label>
     <button class="search-button" type="submit">Search</button>
   </form>
@@ -21,7 +22,7 @@
   <ul class="gallery"></ul>
 
   <div class="load-more-div">
-    <button class="load-more-button" type="submit">Load more</button>
+    <button class="load-more-button" type="button">Load more</button>
   </div>
 
   <span class="loader">Loading images, please wait...</span>
